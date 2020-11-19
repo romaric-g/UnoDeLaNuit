@@ -1,0 +1,14 @@
+.LoginPage {
+    background-color: #181818;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &__form {
+        color: rgb(240, 240, 240);
+        width: 600px;
+        height: 400px;
+    }
+
+}

@@ -1,7 +1,14 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 import { io } from 'socket.io-client';
 import './App.css';
-import Jeu from './components/Jeu/Jeu'
+import LoginPage from './pages/Login';
 
 const socket = io('http://localhost:4000');
 
@@ -13,7 +20,12 @@ socket.on('reverseplay', () => {
 function App() {
   return (
     <div className="App">
-      <Jeu />
+      <Router>
+          <Switch>
+            <Route path="/login" component={LoginPage} />
+            <Route path="*"><Redirect to="/login" /></Route>
+          </Switch>
+      </Router>
     </div>
   );
 }
