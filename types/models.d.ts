@@ -3,7 +3,7 @@ declare namespace Models {
 
   interface SocketResponse {
     success: boolean,
-    message: string
+    message?: string
   }
 
   interface PlayerSettings {
@@ -36,7 +36,7 @@ declare namespace Models {
   }
 
   interface GetRoomSettingResponse extends SocketResponse {
-    settings: RoomSettings
+    settings?: RoomSettings
   }
 
 }
