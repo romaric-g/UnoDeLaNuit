@@ -1,6 +1,6 @@
-import Models from "../../types/models";
+import Models from "./types/models";
 import PlayerController from "./controllers/PlayerController";
-import Pool from "./Pool";
+import Room from "./Room";
 
 
 export default class Player {
@@ -8,13 +8,13 @@ export default class Player {
 
     public id: string;
     public name: string | undefined;
-    public pool: Pool | null;
+    public room: Room | null;
 
     constructor(socket: any) {
         this.socket = socket;
         this.id = socket.id;
         this.name = undefined;
-        this.pool = null;
+        this.room = null;
 
         const playerController = new PlayerController(this);
 
@@ -28,7 +28,14 @@ export default class Player {
         this.name = name;
     }
 
-    setPool(pool: Pool | null) : void {
-        this.pool = pool;
+    setRoom(room: Room | null) : void {
+        if (this.room) {
+            this.room.leave(this)
+        }
+        this.room = room;
+    }
+
+    getRoom() {
+        return this.room;
     }
 }
