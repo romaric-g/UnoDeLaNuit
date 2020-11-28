@@ -1,6 +1,6 @@
 import React from 'react';
 import { io } from 'socket.io-client';
-import './App.css';
+import './App.scss';
 import { Provider as StyletronProvider, DebugEngine } from "styletron-react";
 import { Client as Styletron } from "styletron-engine-atomic";
 
@@ -18,7 +18,7 @@ import {
 var { ThemeProvider } = require('atomize');
 var { StyleReset } = require('atomize');
 
-const socket = io('http://localhost:4000');
+const socket = io('https://le-uno-de-la-nuit.herokuapp.com');
 
 const debug = process.env.NODE_ENV === "production" ? void 0 : new DebugEngine();
 const engine = new Styletron();
@@ -42,7 +42,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <StyleReset />
           <div className="App">
-            <nav>
+            <nav className="App__NavDev">
               <ul>
                 <li>
                   <Link to="/">Home</Link>
