@@ -1,22 +1,41 @@
-import Pool from "./Pool";
+import Models from "./types/models";
+import PlayerController from "./controllers/PlayerController";
+import Room from "./Room";
 
 
 export default class Player {
+    private socket: any;
+
     public id: string;
     public name: string | undefined;
-    public pool: Pool | null;
+    public room: Room | null;
 
-    constructor(id: string) {
-        this.id = id;
+    constructor(socket: any) {
+        this.socket = socket;
+        this.id = socket.id;
         this.name = undefined;
-        this.pool = null;
+        this.room = null;
+
+        const playerController = new PlayerController(this);
+
+        this.socket.on('JoinRoom', playerController.joinRoom);
+        this.socket.on('CreateRoom', playerController.createRoom);
+        this.socket.on('SetRoomSetting', playerController.setRoomSetting)
+        this.socket.on('GetRoomSetting', playerController.getRoomSetting)
     }
 
     setName(name: string) : void {
         this.name = name;
     }
 
-    setPool(pool: Pool | null) : void {
-        this.pool = pool;
+    setRoom(room: Room | null) : void {
+        if (this.room) {
+            this.room.leave(this)
+        }
+        this.room = room;
+    }
+
+    getRoom() {
+        return this.room;
     }
 }

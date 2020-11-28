@@ -28,7 +28,7 @@ class App {
     const router = express.Router()
     router.get('/', (req, res) => {
       res.json({
-        message: 'Hello World!'
+        message: 'Hello World 2!'
       })
     })
     this.express.use('/', router)

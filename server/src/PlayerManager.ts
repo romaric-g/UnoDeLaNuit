@@ -7,7 +7,7 @@ class PlayerManager {
         this.players = {}
     }
 
-    connect(player: Player) {
+    register(player: Player) {
         this.players[player.id] = player;
         console.log('Connected: ' + player.id)
     }
