@@ -1,0 +1,16 @@
+.App {
+  display: flex;
+  &__NavDev{
+    font-family: Arial, Helvetica, sans-serif;
+    ul{
+      display: flex;
+      li{
+        margin-left: 5px;
+      }
+      li:first-child{
+        margin-left: 0px;
+      }
+    }
+  }
+}
+
