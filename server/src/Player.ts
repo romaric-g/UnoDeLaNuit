@@ -1,4 +1,4 @@
-import Models from "../../types/models";
+import Models from "./types/models";
 import PlayerController from "./controllers/PlayerController";
 import Room from "./Room";
 
